@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://cvuxvjy30ecm8"]
+[gd_scene load_steps=2 format=3 uid="uid://cvuxvjy30ecm8"]
+
+[ext_resource type="Texture2D" uid="uid://si3twmodqo2t" path="res://Idle Sword 02.png" id="1_4flbx"]
 
 [node name="player" type="Node2D"]
+
+[node name="IdleSword02" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(250, 211)
+scale = Vector2(3, 3)
+texture = ExtResource("1_4flbx")
