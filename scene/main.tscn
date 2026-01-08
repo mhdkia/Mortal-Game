@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://0ynpqmi7tkb8"]
+[gd_scene load_steps=9 format=3 uid="uid://0ynpqmi7tkb8"]
 
 [ext_resource type="PackedScene" uid="uid://cvuxvjy30ecm8" path="res://scene/player.tscn" id="1_itxqv"]
+[ext_resource type="PackedScene" uid="uid://bwypbj4ugfcmb" path="res://scene/spike.tscn" id="2_v0l8b"]
+[ext_resource type="PackedScene" uid="uid://cbvcdyf6rowyl" path="res://scene/plateforme.tscn" id="4_brvut"]
+[ext_resource type="PackedScene" uid="uid://2vc8ay1k5tnf" path="res://scene/portail_gravity.tscn" id="5_0ha60"]
+[ext_resource type="PackedScene" uid="uid://dfd3m3564y807" path="res://scene/drapeau.tscn" id="5_4j5ol"]
 
 [sub_resource type="Gradient" id="Gradient_v0l8b"]
 
@@ -23,5 +27,58 @@ texture = SubResource("GradientTexture2D_wp4xf")
 position = Vector2(1924, 619)
 shape = SubResource("RectangleShape2D_brvut")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(2928, -626)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(1930.5, 605.99994)
+scale = Vector2(61.140625, 1)
+texture = SubResource("GradientTexture2D_wp4xf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(1924, 619)
+shape = SubResource("RectangleShape2D_brvut")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(6222, 165)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(1930.5, 605.99994)
+scale = Vector2(61.140625, 1)
+texture = SubResource("GradientTexture2D_wp4xf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(1924, 619)
+shape = SubResource("RectangleShape2D_brvut")
+
 [node name="Player" parent="." instance=ExtResource("1_itxqv")]
-position = Vector2(150.24353, 373.75635)
+position = Vector2(2459.4849, 478.61725)
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="Spike" parent="Obstacles" instance=ExtResource("2_v0l8b")]
+position = Vector2(1532, 530)
+scale = Vector2(1.2, 1.2)
+
+[node name="Spike2" parent="Obstacles" instance=ExtResource("2_v0l8b")]
+position = Vector2(2192, 531)
+scale = Vector2(1.2, 1.2)
+
+[node name="Plateforme" parent="." instance=ExtResource("4_brvut")]
+position = Vector2(1688, 483)
+
+[node name="Plateforme2" parent="." instance=ExtResource("4_brvut")]
+position = Vector2(2417, 171)
+horizontal = false
+
+[node name="PortailGravity" parent="." instance=ExtResource("5_0ha60")]
+position = Vector2(3569, 515)
+scale = Vector2(1.2, 1.2)
+
+[node name="PortailGravity2" parent="." instance=ExtResource("5_0ha60")]
+position = Vector2(6394, 103.00001)
+scale = Vector2(1.2, 1.2)
+invert_gravity = false
+
+[node name="Drapeau" parent="." instance=ExtResource("5_4j5ol")]
+position = Vector2(7479, 702)

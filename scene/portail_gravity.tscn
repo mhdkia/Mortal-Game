@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2vc8ay1k5tnf"]
+
+[ext_resource type="Texture2D" uid="uid://c0t2rfos5ggsi" path="res://assets/hud_player_helmet_yellow.png" id="1_sfdnn"]
+[ext_resource type="Script" uid="uid://jgamasce0ao8" path="res://scripts/portail_gravity.gd" id="1_ub6vk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ub6vk"]
+radius = 57.07889
+
+[node name="PortailGravity" type="Area2D"]
+collision_layer = 7
+script = ExtResource("1_ub6vk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_sfdnn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ub6vk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
