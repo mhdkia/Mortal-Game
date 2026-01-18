@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://0ynpqmi7tkb8"]
+[gd_scene load_steps=11 format=3 uid="uid://0ynpqmi7tkb8"]
 
 [ext_resource type="PackedScene" uid="uid://cvuxvjy30ecm8" path="res://scene/player.tscn" id="1_itxqv"]
-[ext_resource type="PackedScene" uid="uid://bwypbj4ugfcmb" path="res://scene/spike.tscn" id="2_v0l8b"]
-[ext_resource type="PackedScene" uid="uid://cbvcdyf6rowyl" path="res://scene/plateforme.tscn" id="4_brvut"]
+[ext_resource type="PackedScene" uid="uid://cv8tt3nyq3lc7" path="res://scene/teleport_portal.tscn" id="4_brvut"]
 [ext_resource type="PackedScene" uid="uid://2vc8ay1k5tnf" path="res://scene/portail_gravity.tscn" id="5_0ha60"]
 [ext_resource type="PackedScene" uid="uid://dfd3m3564y807" path="res://scene/drapeau.tscn" id="5_4j5ol"]
+[ext_resource type="PackedScene" uid="uid://b5u36cwgnxevx" path="res://scene/saw.tscn" id="5_p1hux"]
+[ext_resource type="PackedScene" uid="uid://bvfexotuse4vm" path="res://scene/block.tscn" id="6_4j5ol"]
+[ext_resource type="PackedScene" uid="uid://cbvcdyf6rowyl" path="res://scene/plateforme.tscn" id="7_p1hux"]
 
 [sub_resource type="Gradient" id="Gradient_v0l8b"]
 
@@ -12,20 +14,9 @@
 gradient = SubResource("Gradient_v0l8b")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brvut"]
-size = Vector2(3934, 94)
+size = Vector2(3624.9102, 90.25)
 
 [node name="Main" type="Node2D"]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(1930.5, 605.99994)
-scale = Vector2(61.140625, 1)
-texture = SubResource("GradientTexture2D_wp4xf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1924, 619)
-shape = SubResource("RectangleShape2D_brvut")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(2928, -626)
@@ -36,43 +27,16 @@ scale = Vector2(61.140625, 1)
 texture = SubResource("GradientTexture2D_wp4xf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(1924, 619)
-shape = SubResource("RectangleShape2D_brvut")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(6222, 165)
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
-position = Vector2(1930.5, 605.99994)
-scale = Vector2(61.140625, 1)
-texture = SubResource("GradientTexture2D_wp4xf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(1924, 619)
+position = Vector2(1924, 602)
 shape = SubResource("RectangleShape2D_brvut")
 
 [node name="Player" parent="." instance=ExtResource("1_itxqv")]
-position = Vector2(2459.4849, 478.61725)
+position = Vector2(261.78723, 458.67883)
 
 [node name="Obstacles" type="Node" parent="."]
 
-[node name="Spike" parent="Obstacles" instance=ExtResource("2_v0l8b")]
-position = Vector2(1532, 530)
-scale = Vector2(1.2, 1.2)
-
-[node name="Spike2" parent="Obstacles" instance=ExtResource("2_v0l8b")]
-position = Vector2(2192, 531)
-scale = Vector2(1.2, 1.2)
-
-[node name="Plateforme" parent="." instance=ExtResource("4_brvut")]
-position = Vector2(1688, 483)
-
-[node name="Plateforme2" parent="." instance=ExtResource("4_brvut")]
-position = Vector2(2417, 171)
-horizontal = false
-
 [node name="PortailGravity" parent="." instance=ExtResource("5_0ha60")]
-position = Vector2(3569, 515)
+position = Vector2(3281, 549)
 scale = Vector2(1.2, 1.2)
 
 [node name="PortailGravity2" parent="." instance=ExtResource("5_0ha60")]
@@ -82,3 +46,62 @@ invert_gravity = false
 
 [node name="Drapeau" parent="." instance=ExtResource("5_4j5ol")]
 position = Vector2(7479, 702)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="UI" groups=["score_label"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_top = 92.0
+offset_right = 7.0
+offset_bottom = 220.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="TeleportPortal" parent="." instance=ExtResource("4_brvut")]
+position = Vector2(2770.3638, 546.2727)
+
+[node name="Marker2D" parent="TeleportPortal" index="2"]
+position = Vector2(3739.8423, 0.6243286)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(8152.5, 770.99994)
+scale = Vector2(61.140625, 1)
+texture = SubResource("GradientTexture2D_wp4xf")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Sprite2D2"]
+position = Vector2(-31.574745, -605.99994)
+scale = Vector2(0.016355738, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/StaticBody2D3"]
+position = Vector2(1786.6226, 603.75)
+shape = SubResource("RectangleShape2D_brvut")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(2.9174805, 0)
+scale = Vector2(1.1122143, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1636, 605.99994)
+scale = Vector2(51.937496, 1)
+texture = SubResource("GradientTexture2D_wp4xf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1626.4141, 619.125)
+shape = SubResource("RectangleShape2D_brvut")
+
+[node name="Saw" parent="." instance=ExtResource("5_p1hux")]
+z_index = -1
+position = Vector2(1534, 570)
+
+[node name="Block" parent="." instance=ExtResource("6_4j5ol")]
+position = Vector2(870, 542)
+
+[node name="Plateforme" parent="." instance=ExtResource("7_p1hux")]
+position = Vector2(4494, 481)
+move_distance = 200
+
+[editable path="TeleportPortal"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv8tt3nyq3lc7"]
+
+[ext_resource type="Script" uid="uid://cqd7luwpm2416" path="res://scripts/teleport_portal.gd" id="1_jjrt0"]
+[ext_resource type="Texture2D" uid="uid://c0t2rfos5ggsi" path="res://assets/hud_player_helmet_yellow.png" id="2_xomvc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jemdo"]
+radius = 48.346344
+
+[node name="TeleportPortal" type="Area2D"]
+script = ExtResource("1_jjrt0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xomvc")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jemdo")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(707.5728, -4.0717926)
+gizmo_extents = 36.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
